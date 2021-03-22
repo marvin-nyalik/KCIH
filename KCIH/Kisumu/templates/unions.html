@@ -1,0 +1,60 @@
+{% extends 'index.html'%}
+{% block hero %}
+<div class="container fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			You may also like
+			<b>County leaders Updates</b>. See what they are posting.<br>
+			{% if county_leaders %}
+			{% for leader in county_leaders %}
+			<a href="{% url 'leader_details' leader.id %}">{{leader.fname}} {{leader.lname}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_leaders %}
+			<p>County leaders are not currently registered.</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-8">
+			<h3 class="text-center">KISUMU COUNTY WORK UNIONS</h3>
+			{% if county_unions %}
+			<div class="row">
+			{% for union in county_unions %}
+			 <div class="col-sm-6">
+			    	<div class="card mb-3" style="max-width: 540px;">
+<div class="row no-gutters">
+<div class="col-md-4">
+<img src="{{ union.image.url }}" class="card-img" alt="..." style="height: 7rem; width: 7rem;">
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<h5 class="card-title">{{union}}</h5>
+<p class="card-text">Updates</p>
+<p class="card-text"><a href="{% url 'uni_leader_details' union.id %}">UPDATES </a> </p><br>
+
+</div>
+</div>
+</div>
+</div>
+			    </div>
+			{% endfor %}
+			</div>
+			{% endif %}
+			{% if not county_unions %}
+			<p>There is currently no union. Their may be a reorganization. We'll update once everything is intact.</p>
+			{% endif %}
+
+		</div>
+		<div class="col-sm-2">
+			<p>Are you interested in any of Our ministries? See new updates</p>
+			{% if county_ministries %}
+			{% for ministry in county_ministries %}
+			<a href="{% url 'min_leader_details' ministry.id %}">{{ministry.name}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_ministries %}
+			<p>Ministries are currently off our active database.</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

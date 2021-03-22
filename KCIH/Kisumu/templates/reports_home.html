@@ -1,0 +1,63 @@
+{% extends 'adminbar.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<section>
+	<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <a class="navbar-brand font-weight-bold" href="#" style="color: black;">ADMIN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse font-weight-bold" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'render_home_register' %}" style="color: black;" >Registrations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'view_users' %}" style="color: black;">User Management</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'archive_welcome' %}" style="color: black;">Archive</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'reports_home' %}" style="color: black;">Reports</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'render_change_password' %}" style="color: black;">Change Password</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="text-right text-white font-weight-bold">
+  	{{user.idNo}}
+  	<a href="{% url 'logout' %}" class="btn btn-large bg-success text-white"> Logout</a>
+  </div>
+</nav>
+<!--End of Navbar Section-->
+</section>
+<div class="row">
+		<div class="col-sm-3">
+		<table class="table table-light table-striped table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Entity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="{% url 'reports_home' %}">About Reports</a></td>
+			</tr>
+			<tr>
+				<td><a href="{% url 'leader_projects' %}">Produce Reports</a></td>
+			</tr>
+		</tbody>
+	   </table>
+		</div>
+		<div class="col-sm-9">
+			{% block sub %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'reports_home.html' %}
+{% block sub %}
+<div class="container-fluid">
+	<h4>Click on the leader, ministry or union you want to produce the report for </h4>
+	<div class="row">
+		<div class="col-sm-6">
+			<a class="btn btn-success text-white" href="{% url 'all_projects' %}">ALL PROJECTS</a>
+		</div>
+		<div class="col-sm-6">
+			<a class="btn btn-success text-white" href="{% url 'all_updates' %}">ALL UPDATES</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 m-3">
+			<h5 class="font-weight-bold">COUNTY LEADERS</h5>
+			{% for l in leaders %}
+			<a href="{% url 'leader_project_pdf' l.id %}"> {{l.position}} -{{l.fname}} {{l.lname}} </a><br> 
+			{% endfor %}
+		</div>
+        
+		<div class="col-sm-6 m-3">
+			<h5 class="font-weight-bold">MEMBERS OF PARLIAMENT</h5>
+			{% for l in mps %}
+			<a href="{% url 'mp_project_pdf' l.id %}"> {{l.constituency}} - {{l.fname}} {{l.lname}}</a> <br>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="row">
+		
+		<div class="col-sm-6 m-3">
+			<h5 class="font-weight-bold">MCAs</h5>
+			{% for l in mcas %}
+			<a href="{% url 'mca_project_pdf' l.id %}"> {{l.ward}} -{{l.fname}} {{l.lname}} </a> <br>
+			{% endfor %}
+		</div>
+
+		<div class="col-sm-6 m-3">
+			<h5 class="font-weight-bold">MINISTRIES</h5>
+			{% for l in ministry %}
+			<a href="{% url 'min_project_pdf' l.id %}"> {{l.name}} </a> <br>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

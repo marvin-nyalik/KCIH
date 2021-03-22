@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row m-5">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+				<form action="{% url 'authenticate' %}" method="post">
+		{% csrf_token %}
+		<div class="row m-3">
+			<div class="col">
+				<label class="font-weight-bold">IDENTIFICATION NO: </label>
+			</div>
+				<div class="col">
+					<input type="text" class="form-control" name="idNo" pattern="[0-9]{7,8}" message="Requirement not fulfilled" required>	
+			</div>
+		</div>
+		<div class="row m-3 my-5">
+			<div class="col">
+				<label class="font-weight-bold">PASSWORD : </label>
+			</div>
+				<div class="col">
+					<input type="password" class="form-control" name="password" message="Requirement not fulfilled" required>	
+			</div>
+		</div>
+		<div class="row text-right m-3">
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+				<button class="btn btn-large btn-success text-light" type="submit">LOGIN</button>
+			</div>
+			
+		</div>
+	</form>
+		</div>
+		<div class="col-sm-2"></div>
+		
+	</div>
+
+</div>
+{% endblock %}

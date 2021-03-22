@@ -1,0 +1,60 @@
+{% extends 'index.html'%}
+{% block hero %}
+<div class="container fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			You may also like
+			<b>County leaders Updates</b>. See what they are posting.<br>
+			{% if county_leaders %}
+			{% for leader in county_leaders %}
+		    <a href="{% url 'leader_details' leader.id %}">{{leader.fname}} {{leader.lname}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_leaders %}
+			<p>County leaders are not currently registered.</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-8">
+			<h3 class="text-center">KISUMU COUNTY MINISTRIES</h3>
+			{% if county_ministries %}
+			<div class="row">
+			{% for ministry in county_ministries %}
+			 <div class="col-sm-6">
+			    	<div class="card mb-3" style="max-width: 570px;">
+<div class="row no-gutters">
+<div class="col-md-4">
+<img src="{{ ministry.image.url }}" class="card-img" style="height: 7rem; width: 7rem;">
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<h5 class="card-title">{{ministry}}</h5>
+<p class="card-text">{{ministry.address}}</p>
+<p class="card-text"><a href="{% url 'min_leader_details' ministry.id %}">UPDATES </a> </p><br>
+<p class="card-text"><a href="{% url 'min_projects' ministry.id %}">PROJECTS</a> </p>
+</div>
+</div>
+</div>
+</div>
+			    </div>
+			{% endfor %}
+			</div>
+			{% endif %}
+			{% if not county_ministries %}
+			<p>There is currently no ministry. Their may be a reorganization. We'll update once everything is intact.</p>
+			{% endif %}
+
+		</div>
+		<div class="col-sm-2">
+			<p>Are you part of a Worker's Union? See new updates</p>
+			{% if county_unions %}
+			{% for union in county_unions %}
+			<a href="{% url 'uni_leader_details' union.id %}">{{union}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_unions %}
+			<p>Work unions are currently off our active database.</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

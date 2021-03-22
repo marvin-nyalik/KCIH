@@ -1,0 +1,58 @@
+{% extends 'base_leader.html' %}
+{% block hero %}
+<div class="container-fluid">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'Kisumu/css/bootstrap.min.css' %}">
+	<div class="row">
+		<div class="col-md-2">
+			
+		</div>
+		<div class="col-md-8">
+			<div class="container-fluid">
+				<form action="#" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="row m-2 form-group">
+							<div class="col-sm-3">
+								<label class="font-weight-bold">TITLE</label>
+							</div>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" name="title" placeholder="Update title..." required>
+							</div>
+					</div>
+					<div class="row">
+						<textarea class="form-control" name="message" placeholder="Type message here..." required></textarea>
+					</div>
+					<div class="row m-2">
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold">LOCATION</label>
+								<input type="text" name="location" placeholder="Enter location.." required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold">IMAGE</label>
+								<input type="file" name="image" required>
+							</div>
+						</div>
+					</div>
+					<div class="row m-2">
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	<button class="btn btn-large btn-success">SAVE</button>
+				         </div>	
+				    </div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-2">
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

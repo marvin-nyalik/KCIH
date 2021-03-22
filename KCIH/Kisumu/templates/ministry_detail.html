@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<p>Latest Updates</p>
+			{% if ministry_updates %}
+			{% for update in ministry_updates %}
+			{% if not forloop.last %}
+            <a href="#">{{ update.title }}</a>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+		</div>
+		<div class="col-sm-8">
+			{% if ministry_updates %}
+			{% for update in ministry_updates %}
+			{% if forloop.last %}
+			<div class="container-fluid">
+				<section>
+					<h3 class="bg-success text-white">{{ update.title }}</h3>
+				</section>
+				/////OTHER CONTENT FROM THIS UPDATE
+				- text, date, time, image(if existent)
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+			{% if not ministry_updates %}
+			<p>There are no updates from this ministry.</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-2">
+			You may like updates from other ministries.
+			{% if county_ministries %}
+			{% for ministry in county_ministries %}
+			<a href="#">{{ministry.name}}</a>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

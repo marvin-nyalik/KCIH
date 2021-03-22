@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<p>Latest Updates</p>
+			{% if leader_updates %}
+			{% for update in leader_updates %}
+			{% if not forloop.last %}
+            <a href="#"> {{ update.title }}</a>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+		</div>
+		<div class="col-sm-8">
+			{% if leader_updates %}
+			{% for update in leader_updates %}
+			{% if forloop.last %}
+			<div class="container-fluid">
+				<section>
+					<h3 class="bg-success text-white">{{ update.title }}</h3>
+				</section>
+				/////OTHER CONTENT FROM THIS UPDATE
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+			{% if not leader_updates %}
+			<p>There are no updates from this leader.</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-2">
+			You may like updates from other county leaders.
+			{% if county_leaders %}
+			{% for leader in county_leader %}
+			<a href="#">{{leader.fname}} {{leader.lname}}</a>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

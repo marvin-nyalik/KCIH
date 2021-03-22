@@ -1,0 +1,56 @@
+{% extends 'admin_register.html' %}
+{% block sub %}
+<div class="container-fluid">
+	
+	<div class="row m-5">
+		<div class="col-sm-2">
+		</div>
+		<div class="col-sm-8">
+	<form action="{% url 'add_leader' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label>FIRST NAME</label>
+				<input type="text" name="fname" placeholder="First name" required>
+			</div>
+			<div class="form-group col-md-4">
+				<label>LAST NAME</label>
+				<input type="text" name="lname" placeholder="Last name" required>
+			</div>
+			<div class="form-group col-md-4">
+				<label>ID NUMBER</label>
+				<input type="text" name="idNo" placeholder="ID Number" required>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				{% if alert %}
+				<p class="text-danger">{{ alert }}</p>
+				{% endif %}
+				<label>POSITION</label>
+				{% if positions %}
+				<select name="position" required>
+				{% for p in positions %}
+					<option>{{ p }}</option>
+				{% endfor %}
+				</select>
+				{% endif %}
+			</div>
+			<div class="form-group col-md-4">
+				<label name="pic">UPLOAD PICTURE</label>
+				<input type="file" name="pic" required>
+			</div>
+			<div class="form-group col-md-3">
+				<button type="Submin" class="btn btn-large btn-success">SAVE</button>
+			</div>
+		</div>
+
+		
+	</form>
+		</div>
+		<div class="col-sm-2"></div>
+		
+	</div>
+
+</div>
+{% endblock %}

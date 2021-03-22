@@ -1,0 +1,119 @@
+{% extends 'index.html'%}
+{% block hero %}
+<div class="container fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<p>You may also like our ministry updates</p>
+			{% if county_ministries %}
+			{% for ministry in county_ministries %}
+			<a href="{% url 'min_projects' ministry.id %}">{{ministry.name}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_ministries %}
+			<p>Their is no active ministry in our database</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-8">
+			<h3 class="text-uppercase text-center ">KISUMU COUNTY ELECTED LEADERS</h3>
+			{% if county_leaders %}
+			<div class="row">
+			    
+			    {% for leader in county_leaders %}
+			    <div class="col-sm-6">
+			    	<div class="card mb-3" >
+<div class="row no-gutters">
+<div class="col-md-4">
+<img src="{{ leader.image.url }}" class="card-img" alt="..." style="height: 7rem; width: 7rem;">
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<h5 class="card-title">{{leader.position}}</h5>
+<p class="card-text">{{leader.fname}} {{leader.lname}}</p>
+<p class="card-text"><a href="{% url 'leader_details' leader.id %}">UPDATES </a> </p><br>
+<p class="card-text"><a href="{% url 'leader_projects' leader.id %}">PROJECTS</a> </p>
+</div>
+</div>
+</div>
+</div>
+			    </div>
+			    {% endfor %}
+			    {% endif %}
+			</div>
+			
+			{% if not county_leaders %}
+			<p>There is currently no county leader. The positions include Governor, Senator, Speaker, Women Representative and Youth Representative.</p>
+			{% endif %}
+
+			<h3 class="text-uppercase text-center ">MEMBERS OF PARLIAMENT</h3>
+			{% if county_mps %}
+			<div class="row">
+			    {% for leader in county_mps %}
+			    <div class="col-sm-6">
+			    	<div class="card mb-3" style="max-width: 540px;" style="height: 7rem; width: 7rem;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ leader.image.url }}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{leader.constituency}}</h5>
+        <p class="card-text">{{leader.fname}} {{leader.lname}}</p>
+        <p class="card-text"><a href="{% url 'mp_leader_details' leader.id %}">UPDATES </a> </p><br>
+<p class="card-text"><a href="{% url 'mp_projects' leader.id %}">PROJECTS</a> </p>
+      </div>
+    </div>
+  </div>
+</div>
+			    </div>
+			    {% endfor %}
+			    {% endif %}
+			</div>
+			{% if not county_mps %}
+			<p>There are currently no MPs.</p>
+			{% endif %}
+
+			<h3 class="text-uppercase text-center ">MCAs</h3>
+			{% if county_mcas %}
+			<div class="row">
+			    
+			    {% for leader in county_mcas %}
+			    <div class="col-sm-6">
+			    	<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ leader.image.url }}" class="card-img" alt="..." style="height: 7rem; width: 7rem;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{leader.ward}}</h5>
+        <p class="card-text">{{leader.fname}} {{leader.lname}}</p>
+        <p class="card-text"><a href="{% url 'mca_leader_details' leader.id %}">UPDATES </a> </p><br>
+    <p class="card-text"><a href="{% url 'mca_projects' leader.id %}">PROJECTS</a> </p>
+      </div>
+    </div>
+  </div>
+</div>
+			    </div>
+			    {% endfor %}
+			    {% endif %}
+			    {% if not county_mcas %}
+			<p>There are currently no county MCAs</p>
+			{% endif %}
+			
+			
+</div>
+		</div>
+		<div class="col-sm-2">
+			<p>Are you part of our workers union? You may also like their updates.</p>
+			{% if county_unions %}
+			{% for union in county_unions %}
+			<a href="{% url 'uni_leader_details' union.id %}">{{union.name}}</a><br>
+			{% endfor %}
+			{% endif %}
+			{% if not county_unions %}
+			<p>Their is no active union in our database</p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

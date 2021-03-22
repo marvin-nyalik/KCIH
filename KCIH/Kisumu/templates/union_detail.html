@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<p>Latest Updates</p>
+			{% if union_updates %}
+			{% for update in union_updates %}
+			{% if not forloop.last %}
+            <a href="#">{{ update.title }}</a>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+		</div>
+		<div class="col-sm-8">
+			{% if union_updates %}
+			{% for update in union_updates %}
+			{% if forloop.last %}
+			<div class="container-fluid">
+				<section>
+					<h3 class="bg-success text-white">{{ update.title }}</h3>
+				</section>
+				/////OTHER CONTENT FROM THIS UPDATE
+				- text, date, time, image(if existent)
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+			{% if not union_updates %}
+			<p>There are no updates from this union.</p>
+			{% endif %}
+		</div>
+		<div class="col-sm-2">
+			You may like updates from other unions.
+			{% if county_unions %}
+			{% for union in county_unions %}
+			<a href="#">{{union.name}}</a>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

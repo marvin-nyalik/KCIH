@@ -1,0 +1,66 @@
+{% extends 'base_mp.html' %}
+{% block hero %}
+<div class="container-fluid">
+	{% load static %}
+	
+	<div class="row">
+		<div class="col-sm-2">
+			
+		</div>
+		<div class="col-sm-8">
+			<div class="container-fluid">
+				<h4 class="m-2 text-center p-2">ADD A NEW UPDATE</h4>
+				<form action="{% url 'create_mp_update' %}" method="POST" enctype="multipart/form-data" class="justify-content-center">
+					{% csrf_token %}
+					<div class="form-group">
+							<div class="col-sm-3">
+								<label class="font-weight-bold">TITLE</label>
+							</div>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" name="title" placeholder="Update title..." required>
+							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3">
+							<label class="font-weight-bold">MESSAGE</label>
+						</div>
+						<div class="col-sm-9">
+							<textarea class="form-control" name="message" placeholder="Type message here..." required></textarea>
+						</div>
+						
+					</div>
+					<div class="row m-2">
+					<div class="form-group">
+						<div class="col-sm-8">
+								<label class="font-weight-bold">LOCATION</label>
+								<input type="text" name="location" placeholder="Enter location.." required class="form-control">
+						</div>
+					</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label class="font-weight-bold">IMAGE</label>
+								<input type="file" name="image" accept="image/*" title="Only images are allowed" required>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="row m-2">
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	<button class="btn btn-large btn-success">SAVE</button>
+				         </div>	
+				    </div>
+				</form>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

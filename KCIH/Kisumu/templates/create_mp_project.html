@@ -1,0 +1,84 @@
+{% extends 'base_mp.html' %}
+{% block hero %}
+<div class="container-fluid">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'Kisumu/css/bootstrap.min.css' %}">
+	<div class="row">
+		<div class="col-md-2">
+			
+		</div>
+		<div class="col-md-8">
+			<div class="container-fluid m-3">
+				<h4 class="text-uppercase text-center m-2">Add a new project</h4>
+				<h5 class="text-danger text-center text-uppercase">{{alert}}</h5>
+				<form action="{% url 'create_mp_project' %}" enctype="multipart/form-data" method="POST">
+					{% csrf_token %}
+					<div class="row m-2">
+						
+							<div class="col-sm-3">
+								<label class="font-weight-bold">TITLE</label>
+							</div>
+							<div class="col-sm-9">
+								<input type="text" name="title" placeholder="Update title..." required class="form-control">
+							</div>
+						
+					</div>
+					<div class="row m-2">
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold">LOCATION</label>
+								<input type="text" name="location" placeholder="Enter location.." required class="form-control">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold">IMAGE</label><br>
+								<input type="file" name="image" accept="image/*" title="Only images are allowed">
+							</div>
+						</div>
+					</div>
+					<div class="row m-2">
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold">ESTIMATE COST</label>
+								<input type="text" name="estimate" placeholder="Estimated project cost.." required class="form-control" pattern="\d+">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label class="font-weight-bold" >ALLOCATED AMOUNT</label>
+								<input type="text" name="allocation" required class="form-control" placeholder="Allocated amount.." pattern="\d+">
+							</div>
+						</div>
+					</div>
+					<div class="row m-2">
+						<div class="col-sm-3">
+							<label class="font-weight-bold">DESCRIPTION</label>
+						</div>
+						<div class="col-sm-9">
+							<textarea class="form-control" placeholder="Type message here..." required name="message"></textarea>
+						</div>
+					</div>
+					<div class="row m-2">
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	
+				         </div>	
+				         <div class="col">
+				         	
+				         </div>
+				         <div class="col text-right">
+				         	<button class="btn btn-large btn-success">SAVE</button>
+				         </div>	
+				    </div>
+				</form>
+			</div>
+		</div>
+		<div class="col-md-2">
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base_mca.html' %}
+{% block hero %}
+<div class="container-fluid">
+	
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col"><h4>Total Projects: {{ total }} </h4></div>
+			<div class="col"><h4>Total Projects: {{ total_comp }} </h4></div>
+			<div class="col"><h4>Total Projects: {{ total_incomp }} </h4></div>
+		</div>
+		<div class="col-sm-12">
+		<table class="table table-light table-striped table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Status</th>
+				<th scope="col">Date</th>
+				<th scope="col">Estimate</th>
+				<th scope="col">Allocation</th>
+				<th scope="col">View/Update</th>
+				<th scope="col">Mark Complete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if my_projects %}
+			{% for p in my_projects %}
+			<tr>
+				<td>{{ p.title }}</td>
+				<td>{% if p.status %}Complete {% endif %} {% if not p.status %}Incomplete {% endif %}</td>
+				<td>{{ p.day }}</td>
+				<td>{{ p.estimate }}</td>
+				<td>{{ p.allocation }}</td>
+				<td><a href="{% url 'mca_project_update' p.id %}">View/Update</a></td>
+				<td><a href="{% url 'mca_proj_complete' p.id %}">Mark Complete</a></td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+			{% if not my_projects %}
+			<p class="text-danger">There are no projects you're sponsoring...</p>
+			{% endif %}
+	  	</tbody>
+	    </table>
+		</div>
+	</div>
+	<div class="col-sm-2">
+		
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<!-- <div class="col-sm-8">
+			<div class="pagination">
+                <span class="step-links">
+                    {% if contacts.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ contacts.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="current">
+                    Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+                    </span>
+                    {% if contacts.has_next %}
+                    <a href="?page={{ contacts.next_page_number }}">next</a>
+                    <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+		</div> -->
+		<div class="col-sm-2"></div>
+	</div>
+	
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<h3 class="display-5">
+				{{ alert }}
+			</h3>
+
+			<a class="btn btn-success" href="{% url 'home' %}"> Back to Home</a> 
+		</div>
+		<div class="col"></div>
+	</div>
+</div>
+{% endblock %}

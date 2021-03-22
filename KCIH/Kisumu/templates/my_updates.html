@@ -1,0 +1,62 @@
+{% extends 'base_leader.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-2">
+		Logged in as: {{user.idNo}}
+	</div>
+	<div class="col-sm-8">
+		<h4 class="text-center">The following is a summary of your updates </h4>
+		<h4 class="text-center">Total updates: {{ total }} </h4>
+		<table class="table table-light table-striped table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Location</th>
+				<th scope="col">Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if my_updates %}
+			{% for p in my_updates %}
+			<tr>
+				<td>{{ p.title }}</td>
+				<td>{{ p.location }}</td>
+				<td>{{ p.day }}</td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+			{% if not my_updates %}
+			<h4 class="text-danger text-uppercase">There are no updates you've posted...</h4>
+			{% endif %}
+	  	</tbody>
+	    </table>
+	</div>
+	<div class="col-sm-2">
+		
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<!-- <div class="col-sm-8">
+			<div class="pagination">
+                <span class="step-links">
+                    {% if contacts.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+<a href="?page={{ contacts.previous_page_number }}">previous</a>
+{% endif %}
+<span class="current">
+Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+</span>
+{% if contacts.has_next %}
+<a href="?page={{ contacts.next_page_number }}">next</a>
+<a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+{% endif %}
+</span>
+</div>
+		</div> -->
+		<div class="col-sm-2"></div>
+	</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends 'adminbar.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3">
+			//Sidenav
+		</div>
+		<div class="col-sm-9">
+			{% block sub %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% endblock %}

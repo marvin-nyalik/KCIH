@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block hero %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<p>Other Projects</p>
+			{% if leader_updates %}
+			{% for update in leader_updates %}
+			{% if not forloop.last %}
+            <a href="{% url 'mp_extra_projects' update.id %}"> {{ update.title }}</a><br>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+		</div>
+		<div class="col-sm-8">
+			{% if leader_updates %}
+			{% for update in leader_updates %}
+			{% if forloop.last %}
+			<div class="container-fluid">
+				<h4 class="text-uppercase text-center">{{ update.title }} </h4>
+				<div class="row bg-light">
+					<div class="col-sm-8">
+						<img src="{{ update.image.url }}" style="height: 25rem; width: 80%;" class="bg-dark">
+					</div>
+					<div class="col-sm-4 font-weight-bold text-left">
+						Estimate: {{update.estimate}}<br>
+						Allocation: {{update.allocation}}<br>
+						Day: {{update.day}}<br>
+						Status: {% if update.status %} Complete{% endif %} {% if not update.status %} Incomplete {% endif %}<br>
+					</div>
+				</div>
+				<div class="row bg-light">
+					<div class="col-sm-1">
+						
+					</div>
+					<div class="col-sm-10 bg-white">
+						<p>{{ update.description }}</p>
+					</div>
+					<div class="col-sm-1">
+						
+					</div>
+				</div>
+				<div class="row bg-light">
+					<div class="col-sm-1">
+						
+					</div>
+					<div class="col-sm-10 bg-white">
+						<p class="text-center bg-dark text-light"> Approved content, @MP {{leader.constituency}} on {{update.day}}</p>
+					</div>
+					<div class="col-sm-1">
+						
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+
+			{% if not leader_updates %}
+			<h4>There are no projects from this leader.</h4>
+			{% endif %}
+		</div>
+		<div class="col-sm-2">
+			You may view projects from other MPs.<br>
+			{% if county_leaders %}
+			{% for leader in county_leaders %}
+			<a href="{% url 'mp_projects' leader.id %}">{{leader.fname}} {{leader.lname}}</a><br>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	{% if forloop.last %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-12">
+				<p class="bg-success text-white text-center">KISUMU COUNTY INFORMATION HUB - {{today}}</p>
+			</div>
+			
+		</div>
+	</div>
+	{% endif %}
+	{% if not forloop.last%}
+	{% endif %}
+</div>
+{% endblock %}

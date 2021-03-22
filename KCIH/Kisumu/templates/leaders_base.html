@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>ADMIN KCIH</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'Kisumu/css/bootstrap.min.css' %}">
+</head>
+<body>
+<section>
+	<div class="container-fluid">
+	<div class="row" style="height: 90px;">
+		<div class="col-sm-1" style="height: 90px;">
+			<img src="{% static 'Kisumu/logo.png' %}" style="height: 100%; width: 100%;">
+		</div>
+		<div class="col-sm-11 text-white bg-success text-center">
+			<h1 class="display-4">KISUMU COUNTY INFORMATION HUB</h1>
+		</div>
+
+	</div>
+</div>
+</section>
+<!--Navigation sec-->
+<section>
+	<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <a class="navbar-brand font-weight-bold" href="#" style="color: black;">KCIH</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse font-weight-bold" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: black;" >Update</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: black;">Project</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#" style="color: black;">My Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: black;">My Updates</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="text-right">
+  	<a href="#" class="btn btn-large bg-success text-white"> Logout</a>
+  </div>
+</nav>
+<!--End of Navbar Section-->
+</section>
+</body>
+</html>
+

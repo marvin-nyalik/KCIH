@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
+<script type="text/javascript" src="{% static 'Kisumu/js/bootstrap' %}"></script>
+<script type="text/javascript" src="{% static 'Kisumu/js/bootstrap.min' %}"></script>
+<script type="text/javascript" src="{% static 'Kisumu/js/mdb' %}"></script>
+<script type="text/javascript" src="{% static 'Kisumu/js/mdb.min' %}"></script>
+<script type="text/javascript" src="{% static 'Kisumu/js/popper.min' %}"></script>
+<script type="text/javascript" src="{% static 'Kisumu/js/jquery-3.4.1.min' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'Kisumu/css/bootstrap.min.css' %}">
+	<title>KISUMU COUNTY INFORMATION HUB</title>
+</head>
+<body>
+	<!-- header section-->
+<section>
+	<div class="container-fluid">
+	<div class="row" style="height: 90px;">
+		<div class="col-sm-1" style="height: 90px;">
+			<img src="{% static 'Kisumu/logo.png' %}" style="height: 100%; width: 100%;">
+		</div>
+		<div class="col-sm-11 text-white bg-success text-center">
+			<h1 class="display-4">KISUMU COUNTY INFORMATION HUB</h1>
+		</div>
+
+	</div>
+</div>
+</section>
+<!--Navigation sec-->
+<section>
+	<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <a class="navbar-brand font-weight-bold" href="{% url 'home' %}" style="color: black;">KCIH</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'public_leader' %}" style="color: black;" >Leaders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'public_ministry' %}" style="color: black;">Ministries</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'public_unions' %}" style="color: black;">Unions</a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-right">
+  	<a href="{% url 'login_render' %}" class="btn btn-large bg-success text-white"> Login</a>
+  </div>
+</nav>
+<!--End of Navbar Section-->
+</section>
+<!-- Block Section-->
+{% block hero %}
+{% endblock %}
+</body>
+</html>
